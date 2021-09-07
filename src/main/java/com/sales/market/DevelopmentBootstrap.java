@@ -14,13 +14,13 @@ import java.math.BigDecimal;
 
 @Component
 public class DevelopmentBootstrap implements ApplicationListener<ContextRefreshedEvent> {
-    private BuyRespository buyRespository;
+    private BuyRespository buyRepository;
 
     // injeccion evita hacer instancia   = new Clase();
     // bean pueden tener muchos campos y otros beans asociados
 
-    public DevelopmentBootstrap(BuyRespository buyRespository) {
-        this.buyRespository = buyRespository;
+    public DevelopmentBootstrap(BuyRespository buyRepository) {
+        this.buyRepository = buyRepository;
     }
 
     @Override
@@ -41,6 +41,6 @@ public class DevelopmentBootstrap implements ApplicationListener<ContextRefreshe
     private void persistBuy(BigDecimal value) {
         Buy buy = new Buy();
         buy.setValue(value);
-        buyRespository.save(buy);
+        buyRepository.save(buy);
     }
 }
