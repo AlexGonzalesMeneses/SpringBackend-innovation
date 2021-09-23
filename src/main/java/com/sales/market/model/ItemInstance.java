@@ -8,8 +8,11 @@ import com.sales.market.dto.ItemInstanceDto;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(name = "UK_ITEMINSTANCE_IDENTIFIER", columnNames = {"identifier"})})
 public class ItemInstance extends ModelBase<ItemInstanceDto> {
     @OneToOne
     private Item item;
@@ -24,6 +27,14 @@ public class ItemInstance extends ModelBase<ItemInstanceDto> {
     // todo agregar totalCost
 
     private ItemInstanceStatus itemInstanceStatus;
+
+    public ItemInstanceStatus getItemInstanceStatus() {
+        return itemInstanceStatus;
+    }
+
+    public void setItemInstanceStatus(ItemInstanceStatus itemInstanceStatus) {
+        this.itemInstanceStatus = itemInstanceStatus;
+    }
 
     public Item getItem() {
         return item;
